@@ -110,7 +110,7 @@ class $modify(GrdDemonFilterSelectLayer, DemonFilterSelectLayer) {
     void onButton0(CCObject* sender) {
         ListManager::filterType = 0;
         ListManager::isSupremeSearching = true;
-        auto browserLayer = LevelBrowserLayer::create(ListManager::getSearchObject(349, 249)); // should go to 499
+        auto browserLayer = LevelBrowserLayer::create(ListManager::getSearchObject(499, 249));
         geode::cocos::switchToScene(browserLayer);
     }
     void onButton1(CCObject* sender) {
