@@ -49,6 +49,8 @@ class $modify(GrDInfoLayer, LevelInfoLayer) {
             return;
         }
 
+        if(auto existing = this->getChildByID("grd-difficulty"))
+            existing->removeFromParentAndCleanup(true);
         CCSprite* newIcon = ListManager::getSpriteFromPosition(aredlPos, true);
         //CCSprite* newIcon = CCSprite::createWithSpriteFrameName("GrD_demon0_text.png"_spr);
         newIcon->setID("grd-difficulty");
