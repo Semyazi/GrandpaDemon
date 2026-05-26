@@ -53,15 +53,18 @@ class $modify(LevelCell) {
         std::vector<CCSprite*>nodesDel;
         for (auto clearObj : CCArrayExt<CCObject*>(originalIcon->getChildren()))
             if (CCSprite* newObj = dynamic_cast<CCSprite*>(clearObj))
-                if (newObj->getTag() == 69420) nodesDel.push_back(newObj);
+                if (newObj->getTag() == 133769420) nodesDel.push_back(newObj);
         for(auto newObj:nodesDel) newObj->removeFromParentAndCleanup(true);
 
+        std::vector<CCNode*>children;
         for (auto iconObj : CCArrayExt<CCObject*>(originalIcon->getChildren()))
-            if (CCSprite* newObj = dynamic_cast<CCSprite*>(iconObj)) {
-                newObj->setTag(69420);
-                layer->addChild(newObj);
-                newObj->setPosition(newPos);
-            }
+            if (CCSprite* newObj = dynamic_cast<CCSprite*>(iconObj))
+                children.push_back(newObj);
+        for(auto newObj:children){
+            newObj->setTag(133769420);
+            layer->addChild(newObj);
+            newObj->setPosition(newPos);
+        }
 
         originalIcon->setVisible(false);
 
