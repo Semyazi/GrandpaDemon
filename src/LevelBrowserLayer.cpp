@@ -60,11 +60,8 @@ class $modify(GrDLevelBrowserLayer, LevelBrowserLayer) {
     }
 
     void onNextPage(CCObject* sender) {
-        if (!ListManager::isSupremeSearching) {
+        if (!ListManager::isSupremeSearching || this->m_searchObject->m_searchType != SearchType::Type19) {
             LevelBrowserLayer::onNextPage(sender);
-            return;
-        }
-        if (this->m_searchObject->m_searchType != SearchType::Type19) {
             return;
         }
 
