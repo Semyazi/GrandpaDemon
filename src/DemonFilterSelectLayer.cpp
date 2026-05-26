@@ -134,13 +134,15 @@ class $modify(GrdDemonFilterSelectLayer, DemonFilterSelectLayer) {
     void onButton4(CCObject* sender) {
         ListManager::filterType = 4;
         ListManager::isSupremeSearching = false;
-        auto browserLayer = LevelBrowserLayer::create(ListManager::getSearchObject(24, 0));
+        int lower = Mod::get()->getSettingValue<bool>("grandpa-demon-disable") ? -1 : 0;
+        auto browserLayer = LevelBrowserLayer::create(ListManager::getSearchObject(24, lower));
         geode::cocos::switchToScene(browserLayer);
     }
     void onButton5(CCObject* sender) {
+        if(Mod::get()->getSettingValue<bool>("grandpa-demon-disable")) return; // just in case
         ListManager::filterType = 5;
         ListManager::isSupremeSearching = false;
-        auto browserLayer = LevelBrowserLayer::create(ListManager::getSearchObject(0, 0));
+        auto browserLayer = LevelBrowserLayer::create(ListManager::getSearchObject(0, -1));
         geode::cocos::switchToScene(browserLayer);
     }
 };
