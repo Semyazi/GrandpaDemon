@@ -63,12 +63,12 @@ class $modify(GrDInfoLayer, LevelInfoLayer) {
         std::vector<CCSprite*>nodesDel;
         for (auto clearObj : CCArrayExt<CCObject*>(originalIcon->getChildren()))
             if (CCSprite* newObj = dynamic_cast<CCSprite*>(clearObj))
-                if (newObj->getTag() == 69420) nodesDel.push_back(newObj);
+                if (newObj->getTag() == 133769420) nodesDel.push_back(newObj);
         for(auto newObj:nodesDel) newObj->removeFromParentAndCleanup(true);
 
         for (auto iconObj : CCArrayExt<CCObject*>(originalIcon->getChildren()))
             if (CCSprite* newObj = dynamic_cast<CCSprite*>(iconObj)) {
-                newObj->setTag(69420);
+                newObj->setTag(133769420);
                 this->addChild(newObj);
                 newObj->setPosition(newPos);
             }
