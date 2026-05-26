@@ -92,13 +92,15 @@ class $modify(GrDInfoLayer, LevelInfoLayer) {
                     isGrandpa = true;
                 }
 
-                auto particle1 = ParticleManager::infiniteParticles1(50, isGrandpa);
-                particle1->setPosition({newIcon->getPositionX(), newIcon->getPositionY() + 5.f});
-                this->addChild(particle1);
+                if(auto particle1 = ParticleManager::infiniteParticles1(50, isGrandpa)){
+                    particle1->setPosition({newIcon->getPositionX(), newIcon->getPositionY() + 5.f});
+                    this->addChild(particle1);
+                }
 
-                auto particle2 = ParticleManager::infiniteParticles2(50);
-                particle2->setPosition({newIcon->getPositionX(), newIcon->getPositionY() + 5.f});
-                this->addChild(particle2);
+                if(auto particle2 = ParticleManager::infiniteParticles2(50)){
+                    particle2->setPosition({newIcon->getPositionX(), newIcon->getPositionY() + 5.f});
+                    this->addChild(particle2);
+                }
             }
 
         }
