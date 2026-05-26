@@ -50,10 +50,11 @@ class $modify(LevelCell) {
         newIcon->setPosition(originalIcon->getPosition());
         newIcon->setZOrder(originalIcon->getZOrder()+25);
         
+        std::vector<CCSprite*>nodesDel;
         for (auto clearObj : CCArrayExt<CCObject*>(originalIcon->getChildren()))
             if (CCSprite* newObj = dynamic_cast<CCSprite*>(clearObj))
-                if (newObj->getTag() == 69420)
-                    newObj->removeFromParentAndCleanup(true);
+                if (newObj->getTag() == 69420) nodesDel.push_back(newObj);
+        for(auto newObj:nodesDel) newObj->removeFromParentAndCleanup(true);
 
         for (auto iconObj : CCArrayExt<CCObject*>(originalIcon->getChildren()))
             if (CCSprite* newObj = dynamic_cast<CCSprite*>(iconObj)) {
