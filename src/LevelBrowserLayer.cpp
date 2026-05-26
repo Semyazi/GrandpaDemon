@@ -60,8 +60,8 @@ class $modify(GrDLevelBrowserLayer, LevelBrowserLayer) {
     }
 
     void onNextPage(CCObject* sender) {
-        LevelBrowserLayer::onNextPage(sender);
         if (!ListManager::isSupremeSearching) {
+            LevelBrowserLayer::onNextPage(sender);
             return;
         }
         if (this->m_searchObject->m_searchType != SearchType::Type19) {
@@ -70,24 +70,19 @@ class $modify(GrDLevelBrowserLayer, LevelBrowserLayer) {
 
         if (this->m_fields->m_currentPage < 24) {
             this->m_fields->m_currentPage += 1;
+            nextBtnActions();
         }
-        nextBtnActions();
-        
     }
 
     void onPrevPage(CCObject* sender) {
-        LevelBrowserLayer::onPrevPage(sender);
-        if (!ListManager::isSupremeSearching) {
-            return;
-        }
-        if (this->m_searchObject->m_searchType != SearchType::Type19) {
+        if (!ListManager::isSupremeSearching || this->m_searchObject->m_searchType != SearchType::Type19) {
+            LevelBrowserLayer::onPrevPage(sender);
             return;
         }
         if (this->m_fields->m_currentPage > 0) {
             this->m_fields->m_currentPage -= 1;
-        }
-        nextBtnActions();
-        
+            nextBtnActions();
+        }   
     }
 
     void nextBtnActions() {
