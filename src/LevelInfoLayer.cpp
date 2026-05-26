@@ -108,22 +108,22 @@ class $modify(GrDInfoLayer, LevelInfoLayer) {
         if (aredlPos <= 74 && aredlPos > 24) {
             EffectsManager::mythicalBackground(this, aredlPos);
 
-            if (!Mod::get()->getSettingValue<bool>("particles-disable")) {
-                auto particle = ParticleManager::mythicalParticles(50);
-                particle->setPosition({newIcon->getPositionX(), newIcon->getPositionY() + 5.f});
-                this->addChild(particle);
-            }
+            if (!Mod::get()->getSettingValue<bool>("particles-disable"))
+                if(auto particle = ParticleManager::mythicalParticles(50)){
+                    particle->setPosition({newIcon->getPositionX(), newIcon->getPositionY() + 5.f});
+                    this->addChild(particle);
+                }
             
         }
 
         if (aredlPos <= 149 && aredlPos > 74) {
             EffectsManager::legendaryBackground(this, aredlPos);
 
-            if (!Mod::get()->getSettingValue<bool>("particles-disable")) {
-                auto particle = ParticleManager::legendaryParticles(50);
-                particle->setPosition({newIcon->getPositionX(), newIcon->getPositionY() + 5.f});
-                this->addChild(particle);
-            }
+            if (!Mod::get()->getSettingValue<bool>("particles-disable"))
+                if(auto particle = ParticleManager::legendaryParticles(50)){
+                    particle->setPosition({newIcon->getPositionX(), newIcon->getPositionY() + 5.f});
+                    this->addChild(particle);
+                }
       
         }
         
