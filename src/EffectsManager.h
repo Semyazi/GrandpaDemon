@@ -56,15 +56,9 @@ class EffectsManager {
             }
 
             CCSprite* bg = nullptr;
-
-            CCObject* obj;
-            CCARRAY_FOREACH(layer->getChildren(), obj) {
-                if (CCSprite* spr = dynamic_cast<CCSprite*>(obj)) {
-                    if (spr->getScaledContentSize().width >= CCDirector::sharedDirector()->getWinSize().width - 5) {
-                        bg = spr;
-                    }
-                }
-            }
+            for (auto obj : CCArrayExt<CCObject*>(layer->getChildren()))
+                if (CCSprite* spr = dynamic_cast<CCSprite*>(obj))
+                    if (spr->getScaledContentSize().width >= CCDirector::sharedDirector()->getWinSize().width - 5) bg = spr;
 
             bg->setZOrder(-10);
             bg->setColor({75, 75, 0});
@@ -78,15 +72,9 @@ class EffectsManager {
             float bg2_maxAlpha = 90.f;
             float bg2_offsetAlpha = 50.f;
 
-            CCObject* rObj;
-            CCARRAY_FOREACH(layer->getChildren(), rObj) {
-                if (CCSprite* spr = dynamic_cast<CCSprite*>(rObj)) {
-                    if (spr->getPositionY() < 1) {
-                        spr->setOpacity(50);
-                    }
-                    
-                }
-            }
+            for (auto rObj : CCArrayExt<CCObject*>(layer->getChildren()))
+                if (CCSprite* spr = dynamic_cast<CCSprite*>(rObj))
+                    if (spr->getPositionY() < 1) spr->setOpacity(50);
 
             // BG 1
 
@@ -202,15 +190,9 @@ class EffectsManager {
             }
 
             CCSprite* bg = nullptr;
-
-            CCObject* obj;
-            CCARRAY_FOREACH(layer->getChildren(), obj) {
-                if (CCSprite* spr = dynamic_cast<CCSprite*>(obj)) {
-                    if (spr->getScaledContentSize().width >= CCDirector::sharedDirector()->getWinSize().width - 5) {
-                        bg = spr;
-                    }
-                }
-            }
+            for (auto obj : CCArrayExt<CCObject*>(layer->getChildren()))
+                if (CCSprite* spr = dynamic_cast<CCSprite*>(obj))
+                    if (spr->getScaledContentSize().width >= CCDirector::sharedDirector()->getWinSize().width - 5) bg = spr;
 
             bg->setZOrder(-10);
             bg->setColor({ 65, 41, 142 });
@@ -221,15 +203,9 @@ class EffectsManager {
             float bg1_maxAlpha = 50.f;
             float bg1_offsetAlpha = 130.f;
 
-            CCObject* rObj;
-            CCARRAY_FOREACH(layer->getChildren(), rObj) {
-                if (CCSprite* spr = dynamic_cast<CCSprite*>(rObj)) {
-                    if (spr->getPositionY() < 1) {
-                        spr->setOpacity(50);
-                    }
-                    
-                }
-            }
+            for (auto rObj : CCArrayExt<CCObject*>(layer->getChildren()))
+                if (CCSprite* spr = dynamic_cast<CCSprite*>(rObj))
+                    if (spr->getPositionY() < 1) spr->setOpacity(50);
 
             // BG 1
 
@@ -287,15 +263,10 @@ class EffectsManager {
             }
 
             CCSprite* bg = nullptr;
-
-            CCObject* obj;
-            CCARRAY_FOREACH(layer->getChildren(), obj) {
-                if (CCSprite* spr = dynamic_cast<CCSprite*>(obj)) {
-                    if (spr->getScaledContentSize().width >= CCDirector::sharedDirector()->getWinSize().width - 5) {
+            for (auto obj : CCArrayExt<CCObject*>(layer->getChildren()))
+                if (CCSprite* spr = dynamic_cast<CCSprite*>(obj))
+                    if (spr->getScaledContentSize().width >= CCDirector::sharedDirector()->getWinSize().width - 5)
                         bg = spr;
-                    }
-                }
-            }
 
             bg->setZOrder(-10);
             bg->setColor({ 207, 112, 254 });
@@ -306,15 +277,9 @@ class EffectsManager {
             float bg1_maxAlpha = 40.f;
             float bg1_offsetAlpha = 100.f;
 
-            CCObject* rObj;
-            CCARRAY_FOREACH(layer->getChildren(), rObj) {
-                if (CCSprite* spr = dynamic_cast<CCSprite*>(rObj)) {
-                    if (spr->getPositionY() < 1) {
-                        spr->setOpacity(50);
-                    }
-                    
-                }
-            }
+            for (auto rObj : CCArrayExt<CCObject*>(layer->getChildren()))
+                if (CCSprite* spr = dynamic_cast<CCSprite*>(rObj))
+                    if (spr->getPositionY() < 1) spr->setOpacity(50);
 
             // BG 1
 
