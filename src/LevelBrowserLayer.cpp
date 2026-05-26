@@ -11,23 +11,17 @@ class $modify(GrDLevelBrowserLayer, LevelBrowserLayer) {
     };
 
     bool init(GJSearchObject* p0) {
+        if (!ListManager::isSupremeSearching)
+            return LevelBrowserLayer::init(p0);
 
-        if (!ListManager::isSupremeSearching) {
-            LevelBrowserLayer::init(p0);
-            return true;
-        }
-
-        if (p0->m_searchType != SearchType::Type19) {
-            LevelBrowserLayer::init(p0);
-            return true;
-        }
+        if (p0->m_searchType != SearchType::Type19)
+            return LevelBrowserLayer::init(p0);
 
         this->m_fields->m_currentPage = 0;
         int page = this->m_fields->m_currentPage;
         this->m_fields->m_lowIdx = page * 10;
 
-        LevelBrowserLayer::init(ListManager::getSearchObject(499, 489));
-        return true;
+        return LevelBrowserLayer::init(ListManager::getSearchObject(499, 489));
     }
 
     // TodoReturn loadPage(GJSearchObject* p0) {
