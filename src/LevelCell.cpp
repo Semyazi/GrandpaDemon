@@ -27,7 +27,7 @@ class $modify(LevelCell) {
         CCSprite* originalIcon = nullptr;
 
         for (auto obj : CCArrayExt<CCObject*>(m_mainLayer->getChildren()))
-            if (CCNode* newObj = dynamic_cast<CCNode*>(obj))
+            if (CCNode* newObj = dynamic_cast<CCNode*>(obj)) {
                 if (newObj->getZOrder() == 2)
                     newObj->setID("grd-demon-icon-layer");
                     for (auto obj2 : CCArrayExt<CCObject*>(newObj->getChildren()))
@@ -36,6 +36,7 @@ class $modify(LevelCell) {
                                 originalIcon = newObj2;
                                 break;
                             }
+            }
 
         if (originalIcon == nullptr) {
             return;
