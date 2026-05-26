@@ -25,6 +25,32 @@ class ListManager {
                 isFound = str.find("_id");
             }
         }
+        
+        inline static void parseRequestString(std::string str) {
+            demonIDList.clear();
+
+            auto result = matjson::parse(str);
+            
+            if (!result.isOk()) {
+                log::error("JSON parse failed: {}", result.unwrapErr());
+                return;
+            }
+
+            auto value = result.unwrap();
+            
+            if(!value.isArray()){
+                log::warn("Expected JSON array but got something else???");
+                return;
+            }
+
+            auto arr = value.asArray().unwrap();
+            for (auto& item : value.asArray().unwrap())
+                if (item.contains("level_id")) {
+                    auto idResult = item["level_id"].asInt();
+                    if (idResult.isOk()) demonIDList.push_back(idResult.unwrap());    
+                    else log::warn("Skipping item: 'id' is not a valid integer");
+                }
+        }
 
         inline static int getPositionOfID(int id) {
             for (unsigned int i = 0; i < demonIDList.size(); i++) {
@@ -100,7 +126,7 @@ class ListManager {
             std::stringstream download;
             bool first = true;
             for (int i = upper; i > lower; i--) {
-                if(ListManager::demonIDList.size() < i+1) continue;
+                if (ListManager::demonIDList.size() < i+1) continue;
                 if (!first) download << ",";
                 download << std::to_string(ListManager::demonIDList.at(i));
                 first = false;
@@ -108,9 +134,7 @@ class ListManager {
             
             download << "&gameVersion=22";
             return GJSearchObject::create(SearchType::Type19, download.str());
-        }   
-
-        
+        }
 };
 
 #endif
